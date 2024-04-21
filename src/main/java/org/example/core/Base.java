@@ -21,9 +21,9 @@ public class Base {
         if(browser.equalsIgnoreCase("google_chrome")){
             browserType = SeleniumDriver.BrowserType.CHROME;
         }
-//        else if(browser.equalsIgnoreCase("ms_edge")){
-//            browserType = SeleniumDriver.BrowserType.MS_EDGE;
-//        }
+        else if(browser.equalsIgnoreCase("ms_edge")){
+            browserType = SeleniumDriver.BrowserType.MS_EDGE;
+        }
 
         seleniumDriverInstance = new SeleniumDriver(browserType);
         driver = seleniumDriverInstance.getDriver();
