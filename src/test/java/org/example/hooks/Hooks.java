@@ -14,9 +14,9 @@ public class Hooks extends Base  {
         if(scenario.isFailed()){
             takeScreenshotForReport(scenario);
         }
-        else{
-            takeScreenshotForReport(scenario);
-        }
+//        else{
+//            takeScreenshotForReport(scenario);
+//        }
         driver.close();
     }
 }
