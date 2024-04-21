@@ -20,6 +20,7 @@
     <io.rest.assured.version>5.4.0</io.rest.assured.version>
     <org.hamcrest.version>2.2</org.hamcrest.version>
     <allure-report.version>2.26.0</allure-report.version>
+    <webdrivermanager.version>5.7.0</webdrivermanager.version>
     <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
     <maven.surefire.plugin.version>3.2.1</maven.surefire.plugin.version>
     <maven.compiler.source>12</maven.compiler.source>
@@ -91,7 +92,7 @@
     <dependency>
     <groupId>io.github.bonigarcia</groupId>
     <artifactId>webdrivermanager</artifactId>
-    <version>5.2.1</version>
+    <version>${webdrivermanager.version}</version>
     </dependency>
 
     <dependency>
@@ -124,7 +125,7 @@
         <version>${maven.surefire.plugin.version}</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>src\test\resources\testNGs\Backoffice_tests.xml</suiteXmlFile>
+            <suiteXmlFile>src\test\resources\testNG\PathCare_demo.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>
