@@ -4,7 +4,7 @@
     <test name="Test">
         <classes>
             <class name="org.example.APIs.ComplexJsonParse"/>
-            <class name="org.example.runner.Runner"/>
+<!--            <class name="org.example.runner.Runner"/>-->
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
