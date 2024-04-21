@@ -2,7 +2,7 @@
 Feature: PDF reports view and download functionality (Departmental Report)
 
   Background:
-    Given that the user opens "ms_edge" browser
+    Given that the user opens "google_chrome" browser
     When  the user navigates to PathCare Patient Portal "https://patients.pathcare.co.za/" website
 
     Scenario:Verify the view and download of departmental report functionality of the system.
