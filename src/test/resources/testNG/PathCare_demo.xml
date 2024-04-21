@@ -3,8 +3,8 @@
 <suite name="Suite" parallel="methods" thread-count="2">
     <test name="Test">
         <classes>
+            <class name="org.example.APIs.ComplexJsonParse"/>
             <class name="org.example.runner.Runner"/>
-            <class name="org.example.APIs.ComplexJsonParse"></class>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
