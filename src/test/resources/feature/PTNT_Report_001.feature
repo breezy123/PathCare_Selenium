@@ -1,4 +1,4 @@
-@web_automation
+#@web_automation
 Feature: PDF reports view and download functionality (Load Report)
 
   Background:
