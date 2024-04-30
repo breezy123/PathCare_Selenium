@@ -15,7 +15,7 @@
     <cucumber.version>7.14.0</cucumber.version>
     <extentreports.cucumber7.adapter.version>1.14.0</extentreports.cucumber7.adapter.version>
     <extentreports.version>5.1.1</extentreports.version>
-    <selenium.version>4.19.1</selenium.version>
+    <selenium.version>4.20.0</selenium.version>
     <testng.version>7.8.0</testng.version>
     <io.rest.assured.version>5.4.0</io.rest.assured.version>
     <org.hamcrest.version>2.2</org.hamcrest.version>
@@ -111,22 +111,17 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven.compiler.plugin.version}</version>
-        <configuration>
-          <!--          <source>${maven.compiler.source.version}</source>-->
-          <!--          <target>${maven.compiler.target.version}</target>-->
-        </configuration>
-      </plugin>
-      <plugin>
+
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.plugin.version}</version>
         <configuration>
-          <suiteXmlFiles>
-            <suiteXmlFile>src\test\resources\testNG\PathCare_demo.xml</suiteXmlFile>
-          </suiteXmlFiles>
+          <properties>
+            <property>
+              <name>dataproviderthreadcount</name>
+              <value>2</value>
+            </property>
+          </properties>
         </configuration>
       </plugin>
     </plugins>

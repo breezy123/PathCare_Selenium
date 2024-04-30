@@ -1,6 +1,7 @@
 package org.example.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Getter;
 import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,13 +23,9 @@ public class SeleniumDriver {
     public enum BrowserType {
         CHROME, MS_EDGE} //choosing browser type
 
+    @Getter
     private WebDriver driver;
     private BrowserType currentBrowser;
-    private static final String rootDirectory = System.getProperty("user.dir");
-
-    public WebDriver getDriver() {
-        return driver;
-    }
 
     public SeleniumDriver(BrowserType browser) {
         this.currentBrowser = browser;
@@ -62,6 +59,6 @@ public class SeleniumDriver {
 
         this.driver.manage().window().maximize();
         this.driver.manage().deleteAllCookies();
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 }

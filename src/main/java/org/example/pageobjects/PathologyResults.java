@@ -6,14 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class PathologyResults {
-
     WebDriver driver;
-
     @FindBy(xpath = "//div[@class='mat-mdc-form-field-infix ng-tns-c27-3']")
     private WebElement filterResults_textField;
     @FindBy(xpath = "//input[@placeHolder='Search for doctor, collection date, or tests ordered.']")

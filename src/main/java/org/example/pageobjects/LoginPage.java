@@ -1,6 +1,5 @@
 package org.example.pageobjects;
 
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,6 +15,9 @@ public class LoginPage {
     @FindBy(xpath = "//p[@class='oxd-text oxd-text--p oxd-alert-content-text']")
     private WebElement invalidCredentials;
 
+    public void refresh(){
+        driver.navigate().refresh();
+    }
     public  void NavigateToSite(String url){
         try{
             driver.get(url);
@@ -28,25 +30,11 @@ public class LoginPage {
         this.driver=driver;
         PageFactory.initElements(driver,this);
     }
-
-    public boolean validateCredentialFields(){
-        try{
-            usernameTxtField.isDisplayed();
-            passwordTxtField.isDisplayed();
-
-        }
-        catch(Exception ex){
-            System.err.println("[ERROR] FAILED TO VALIDATED CREDENTIALS FIELDS.\t"+ex.getMessage());
-            return false;
-        }
-        return true;
-    }
     public boolean enterCredentials(String username, String password){
             usernameTxtField.sendKeys((username));
             passwordTxtField.sendKeys((password));
             passwordTxtField.sendKeys(Keys.ENTER);
             return true;
-
     }
     public boolean invalidCredemtials(){
         return invalidCredentials.isDisplayed();

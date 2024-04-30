@@ -24,7 +24,6 @@ public class MyProfile {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
-
     public boolean validatePatientRecords() throws Exception{
         idNumber.isDisplayed();
         surname.isDisplayed();
