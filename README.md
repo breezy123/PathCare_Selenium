@@ -10,4 +10,4 @@ Tools used here are:
 4. XML execution file.
 
 
-Execute command: mvn clean test to run test.
+Execute command: mvn clean test
