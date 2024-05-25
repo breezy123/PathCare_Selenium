@@ -32,7 +32,7 @@ public class SeleniumDriver {
                 case CHROME:
                     ChromeOptions chromeOptions = new ChromeOptions();
                     WebDriverManager.chromedriver().setup();
-//                    chromeOptions.addArguments("--headless=new");
+                    chromeOptions.addArguments("--headless=new");
                     driver = new ChromeDriver(chromeOptions);
                     break;
                 case MS_EDGE:
