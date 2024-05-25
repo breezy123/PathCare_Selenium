@@ -1,20 +1,25 @@
 package org.example.pageobjects;
 
-import net.bytebuddy.asm.Advice;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
     WebDriver driver;
-    @FindBy(id = "username")
+    @FindBy(how= How.ID, using = "username")
     private WebElement usernameTxtField;
-    @FindBy(id = "password")
+    @FindBy(how= How.ID, using = "password")
     private WebElement passwordTxtField;
-    @FindBy(xpath = "//p[@class='oxd-text oxd-text--p oxd-alert-content-text']")
+    @FindBy(how= How.XPATH, using = "//p[@class='oxd-text oxd-text--p oxd-alert-content-text']")
     private WebElement invalidCredentials;
+
+    public LoginPage(WebDriver driver){
+        this.driver=driver;
+        PageFactory.initElements(driver,this);
+    }
 
     public  void NavigateToSite(String url){
         try{
@@ -24,31 +29,10 @@ public class LoginPage {
             System.err.println("[Error] Navigation error:"+ex.getMessage());
         }
     }
-    public LoginPage(WebDriver driver){
-        this.driver=driver;
-        PageFactory.initElements(driver,this);
-    }
 
-    public boolean validateCredentialFields(){
-        try{
-            usernameTxtField.isDisplayed();
-            passwordTxtField.isDisplayed();
-
-        }
-        catch(Exception ex){
-            System.err.println("[ERROR] FAILED TO VALIDATED CREDENTIALS FIELDS.\t"+ex.getMessage());
-            return false;
-        }
-        return true;
-    }
-    public boolean enterCredentials(String username, String password){
+    public void enterCredentials(String username, String password){
             usernameTxtField.sendKeys((username));
-            passwordTxtField.sendKeys((password));
-            passwordTxtField.sendKeys(Keys.ENTER);
-            return true;
-
+            passwordTxtField.sendKeys((password),Keys.ENTER);
     }
-    public boolean invalidCredemtials(){
-        return invalidCredentials.isDisplayed();
-    }
+    public void invalidCredemtials(){invalidCredentials.isDisplayed();}
 }

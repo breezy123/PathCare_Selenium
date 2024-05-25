@@ -1,32 +1,23 @@
 package org.example.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.ie.InternetExplorerOptions;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.time.Duration;
-import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 public class SeleniumDriver {
 
     public enum BrowserType {
         CHROME, MS_EDGE} //choosing browser type
 
-    private WebDriver driver;
+    private static WebDriver driver;
     private BrowserType currentBrowser;
-    private static final String rootDirectory = System.getProperty("user.dir");
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return driver;
     }
 
@@ -41,8 +32,8 @@ public class SeleniumDriver {
                 case CHROME:
                     ChromeOptions chromeOptions = new ChromeOptions();
                     WebDriverManager.chromedriver().setup();
-                    chromeOptions.addArguments("--headless=new");
-                    this.driver = new ChromeDriver(chromeOptions);
+//                    chromeOptions.addArguments("--headless=new");
+                    driver = new ChromeDriver(chromeOptions);
                     break;
                 case MS_EDGE:
                     EdgeOptions edgeOptions = new EdgeOptions();
@@ -50,7 +41,7 @@ public class SeleniumDriver {
                     edgeOptions.addArguments("--guest");
                     edgeOptions.addArguments("--remote-allow-origins=*");
                     edgeOptions.addArguments("-headless");
-                    this.driver = new EdgeDriver(edgeOptions);
+                    driver = new EdgeDriver(edgeOptions);
                     break;
                 default:
                     System.err.println("Invalid Browser");
@@ -60,8 +51,8 @@ public class SeleniumDriver {
             System.err.println("[Error]: Error Launching driver " + ex.getMessage());
         }
 
-        this.driver.manage().window().maximize();
-        this.driver.manage().deleteAllCookies();
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 }

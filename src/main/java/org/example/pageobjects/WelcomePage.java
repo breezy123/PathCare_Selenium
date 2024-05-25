@@ -1,6 +1,5 @@
 package org.example.pageobjects;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,51 +26,46 @@ public class WelcomePage {
         PageFactory.initElements(driver,this);
     }
 
-    public boolean validateWelcomeTitle(){
+    public void validateWelcomeTitle(){
         try{
 
-            return welcomeTitle.isDisplayed();
+             welcomeTitle.isDisplayed();
         }
         catch (Exception ex){
             System.err.println("[ERROR] FAILED TO VALIDATE WELCOME TITLE.\t"+ex.getMessage());
-            return false;
         }
     }
 
-    public boolean validateLoggedUser(){
+    public void validateLoggedUser(){
         try{
 
-            return loggedInUser.isDisplayed();
+           loggedInUser.isDisplayed();
         }
         catch (Exception ex){
             System.err.println("[ERROR] FAILED TO VALIDATE LOGGED-IN USER FULL-NAME.\t"+ex.getMessage());
-            return false;
+
         }
     }
 
-    public boolean clickLogOut(){
+    public void clickLogOut(){
 
         try{
             if(logOutButton.isDisplayed()){
                 logOutButton.click();
             }
-            return true;
         }
         catch (Exception ex){
             System.err.println("[ERROR] FAILED TO CLICK LOGOUT BUTTON.\t"+ex.getMessage());
-            return false;
         }
     }
 
-    public boolean clickMyResults() throws Exception{
+    public void clickMyResults() throws Exception{
         myResults.isDisplayed();
         myResults.click();
-        return true;
     }
 
-    public boolean clickMyProfile() throws Exception{
+    public void clickMyProfile() throws Exception{
         myProfileOption.isDisplayed();
         myProfileOption.click();
-        return true;
     }
 }

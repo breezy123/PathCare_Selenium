@@ -25,13 +25,12 @@ public class MyProfile {
         PageFactory.initElements(driver,this);
     }
 
-    public boolean validatePatientRecords() throws Exception{
+    public void validatePatientRecords() throws Exception{
         idNumber.isDisplayed();
         surname.isDisplayed();
         firstName.isDisplayed();
         emailAddress.isDisplayed();
         cellPhoneNumber.isDisplayed();
         defaultPractice.isDisplayed();
-        return true;
     }
 }

@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class PathologyResults {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
-    public boolean enterDataToFilter(String data)throws Exception{
+    public void enterDataToFilter(String data)throws Exception{
         filterResults_textField.isDisplayed();
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("arguments[0].click();",filterResults_textField);
@@ -54,9 +53,9 @@ public class PathologyResults {
         Thread.sleep(5000);
         filterResults_textField2.sendKeys(Keys.ENTER);
 //        Thread.sleep(10000);
-        return true;
+
     }
-    public boolean tableResultsValidation()throws Exception{
+    public void tableResultsValidation()throws Exception{
         //Initialize a new array list to store the text
         List<String> tableData = new ArrayList<String>();
 
@@ -66,19 +65,17 @@ public class PathologyResults {
             tableData.add(tableRows.get(i).getText());
             System.out.println(tableData.get(i).toString()+"\t");
         }
-        return true;
     }
 
-    public boolean clickLoadReportButton() throws Exception{
+    public void clickLoadReportButton() throws Exception{
         loadReportButton.isDisplayed();
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         executor.executeScript("arguments[0].click();",loadReportButton);
         Thread.sleep(8000);
         switchToiFrameAndDownload();
-        return true;
     }
 
-    public boolean downloadDepartmentReports() throws Exception{
+    public void downloadDepartmentReports() throws Exception{
         Thread.sleep(3000);
         episodeNumber1.isDisplayed();
         episodeNumber1.click();
@@ -86,17 +83,15 @@ public class PathologyResults {
         departmentReport.click();
         Thread.sleep(8000);
         switchToiFrameAndDownload();
-        return true;
     }
 
-    public boolean downloadCumulative() throws Exception{
+    public void downloadCumulative() throws Exception{
         cumulativeOption.isDisplayed();
         JavascriptExecutor executor = (JavascriptExecutor)driver;
         Thread.sleep(7000);
         executor.executeScript("arguments[0].click();",cumulativeOption);
         Thread.sleep(8000);
         switchToiFrameAndDownload();
-        return true;
     }
     public void switchToiFrameAndDownload() throws Exception{
         driver.switchTo().frame(iFrameForDownload);

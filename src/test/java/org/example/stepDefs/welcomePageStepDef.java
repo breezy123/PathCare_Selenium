@@ -2,28 +2,22 @@ package org.example.stepDefs;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.testng.Assert;
+import org.example.driver.SeleniumDriver;
+import org.example.pageobjects.WelcomePage;
 
-import static org.example.core.Base.welcomePageObject;
 
-public class welcomePageStepDef {
+public class welcomePageStepDef{
+
+    WelcomePage welcomePageObject = new WelcomePage(SeleniumDriver.getDriver());
     @And("user is directed to the landing page")
-    public void userIsDirectedToTheLandingPage() {
-        Assert.assertTrue(welcomePageObject.validateWelcomeTitle());
-    }
+    public void userIsDirectedToTheLandingPage() {welcomePageObject.validateWelcomeTitle();}
 
     @Then("user is displayed on the right top corner")
-    public void userIsDisplayedOnTheRightTopCorner() {
-        Assert.assertTrue(welcomePageObject.validateLoggedUser());
-    }
+    public void userIsDisplayedOnTheRightTopCorner() {welcomePageObject.validateLoggedUser();}
 
     @And("user clicks on LogOut to logout of the system")
-    public void userClicksOnLogOutToLogoutOfTheSystem() {
-        Assert.assertTrue(welcomePageObject.clickLogOut());
-    }
+    public void userClicksOnLogOutToLogoutOfTheSystem() {welcomePageObject.clickLogOut();}
 
     @And("user clicks My Profile option")
-    public void userClicksMyProfileOption()throws Exception {
-        Assert.assertTrue(welcomePageObject.clickMyProfile());
-    }
+    public void userClicksMyProfileOption()throws Exception {welcomePageObject.clickMyProfile();}
 }
