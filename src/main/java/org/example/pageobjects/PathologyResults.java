@@ -52,8 +52,6 @@ public class PathologyResults {
         filterResults_textField2.sendKeys(data);
         Thread.sleep(5000);
         filterResults_textField2.sendKeys(Keys.ENTER);
-//        Thread.sleep(10000);
-
     }
     public void tableResultsValidation()throws Exception{
         //Initialize a new array list to store the text

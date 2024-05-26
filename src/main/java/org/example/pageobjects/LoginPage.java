@@ -34,5 +34,5 @@ public class LoginPage {
             usernameTxtField.sendKeys((username));
             passwordTxtField.sendKeys((password),Keys.ENTER);
     }
-    public void invalidCredemtials(){invalidCredentials.isDisplayed();}
+    public void invalidCredentials(){invalidCredentials.isDisplayed();}
 }

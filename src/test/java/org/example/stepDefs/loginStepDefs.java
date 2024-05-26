@@ -21,7 +21,7 @@ public class loginStepDefs {
     public void userEntersUsernameAnd(String username, String password) {loginPageObject.enterCredentials(username,password);}
 
     @And("user validates the error message Invalid credentials")
-    public void userValidatesTheErrorMessageInvalidCredentials() {loginPageObject.invalidCredemtials();}
+    public void userValidatesTheErrorMessageInvalidCredentials() {loginPageObject.invalidCredentials();}
 
     @Then("user validates username and password input fields")
     public void userValidatesUsernameAndPasswordInputFields() {
