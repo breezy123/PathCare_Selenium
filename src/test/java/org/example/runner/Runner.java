@@ -10,7 +10,7 @@ import io.cucumber.testng.CucumberOptions;
         features = {"src/test/resources/feature"},
         tags="@web_automation",
         glue = {"org.example"},
-        plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+        plugin = {"json:target/jsonReports/cucumber-report.json"}
 )
 
 public class Runner extends AbstractTestNGCucumberTests{

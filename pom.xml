@@ -13,18 +13,17 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <cucumber.version>7.14.0</cucumber.version>
-    <extentreports.cucumber7.adapter.version>1.14.0</extentreports.cucumber7.adapter.version>
-    <extentreports.version>5.1.1</extentreports.version>
+    <cucumber.report>5.8.0</cucumber.report>
     <selenium.version>4.19.1</selenium.version>
     <testng.version>7.8.0</testng.version>
     <io.rest.assured.version>5.4.0</io.rest.assured.version>
     <org.hamcrest.version>2.2</org.hamcrest.version>
-    <allure-report.version>2.26.0</allure-report.version>
+<!--    <allure-report.version>2.26.0</allure-report.version>-->
     <webdrivermanager.version>5.7.0</webdrivermanager.version>
     <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
     <maven.surefire.plugin.version>3.2.1</maven.surefire.plugin.version>
-    <maven.compiler.source>12</maven.compiler.source>
-    <maven.compiler.target>12</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -41,19 +40,19 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Cucumber ExtentReport Adapter -->
-    <dependency>
-      <groupId>tech.grasshopper</groupId>
-      <artifactId>extentreports-cucumber7-adapter</artifactId>
-      <version>${extentreports.cucumber7.adapter.version}</version>
-    </dependency>
+<!--    &lt;!&ndash; Cucumber ExtentReport Adapter &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>tech.grasshopper</groupId>-->
+<!--      <artifactId>extentreports-cucumber7-adapter</artifactId>-->
+<!--      <version>${extentreports.cucumber7.adapter.version}</version>-->
+<!--    </dependency>-->
 
-    <!-- Extent Report -->
-    <dependency>
-      <groupId>com.aventstack</groupId>
-      <artifactId>extentreports</artifactId>
-      <version>${extentreports.version}</version>
-    </dependency>
+<!--    &lt;!&ndash; Extent Report &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>com.aventstack</groupId>-->
+<!--      <artifactId>extentreports</artifactId>-->
+<!--      <version>${extentreports.version}</version>-->
+<!--    </dependency>-->
 
     <!-- Selenium -->
     <dependency>
@@ -70,12 +69,12 @@
       <version>${testng.version}</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
-    <dependency>
-      <groupId>io.qameta.allure</groupId>
-      <artifactId>allure-testng</artifactId>
-      <version>${allure-report.version}</version>
-    </dependency>
+<!--    &lt;!&ndash; https://mvnrepository.com/artifact/io.qameta.allure/allure-testng &ndash;&gt;-->
+<!--    <dependency>-->
+<!--      <groupId>io.qameta.allure</groupId>-->
+<!--      <artifactId>allure-testng</artifactId>-->
+<!--      <version>${allure-report.version}</version>-->
+<!--    </dependency>-->
 
     <dependency>
       <groupId>junit</groupId>
@@ -112,15 +111,6 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven.compiler.plugin.version}</version>
-        <configuration>
-          <!--          <source>${maven.compiler.source.version}</source>-->
-          <!--          <target>${maven.compiler.target.version}</target>-->
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${maven.surefire.plugin.version}</version>
         <configuration>
@@ -129,6 +119,62 @@
           </suiteXmlFiles>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <testFailureIgnore>true</testFailureIgnore>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>net.masterthought</groupId>
+        <artifactId>maven-cucumber-reporting</artifactId>
+        <version>${cucumber.report}</version>
+        <executions>
+          <execution>
+            <id>execution</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <projectName>cucumber-jvm-example</projectName>
+              <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
+              <skip>false</skip>
+              <!-- output directory for the generated report -->
+              <outputDirectory>${project.build.directory}</outputDirectory>
+              <!-- optional, defaults to outputDirectory if not specified -->
+              <inputDirectory>${project.build.directory}/jsonReports</inputDirectory>
+              <jsonFiles>
+                <!-- supports wildcard or name pattern -->
+                <param>**/*.json</param>
+              </jsonFiles>
+              <!-- optional, defaults to outputDirectory if not specified -->
+              <!--              <classificationDirectory>${project.build.directory}/classifications</classificationDirectory>-->
+              <!--              <classificationFiles>-->
+              <!--                &lt;!&ndash; supports wildcard or name pattern &ndash;&gt;-->
+              <!--                <param>sample.properties</param>-->
+              <!--                <param>other.properties</param>-->
+              <!--                <parallelTesting>false</parallelTesting>-->
+              <!--              </classificationFiles>-->
+
+              <!-- optional, set true to group features by its Ids -->
+              <mergeFeaturesById>false</mergeFeaturesById>
+              <!-- optional, set true to get a final report with latest results of the same test from different test runs -->
+              <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+              <!-- optional, set true to fail build on test failures -->
+              <checkBuildResult>false</checkBuildResult>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+<!--      <plugin>-->
+<!--        <configuration>-->
+<!--          <suiteXmlFiles>-->
+<!--            <suiteXmlFile>src\test\resources\testNG\PathCare_demo.xml</suiteXmlFile>-->
+<!--          </suiteXmlFiles>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
     </plugins>
   </build>
 </project>

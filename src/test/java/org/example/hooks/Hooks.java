@@ -10,7 +10,7 @@ public class Hooks extends Base{
 
     @Before
     public void setUpBrowserANDPageObjects(){
-        SeleniumDriver.BrowserType browserType = SeleniumDriver.BrowserType.CHROME;
+        SeleniumDriver.BrowserType browserType = SeleniumDriver.BrowserType.MS_EDGE;
         SeleniumDriver seleniumDriverInstance = new SeleniumDriver(browserType);
         driver = seleniumDriverInstance.getDriver();
     }
